@@ -1,6 +1,12 @@
 'use client'
 import { useState, useEffect } from 'react'
-
+import Header from './components/Header'
+import Footer from './components/Footer'
+import WhatsAppButton from '../app/components/WhatsAppButton'
+import GoogleReviewsSection from './it-support/components/GoogleReviewSection'
+import KiAgentenSection from './components/sections/KiAgentenSection'
+import WebdesignSection from './components/sections/WebdesignSection'
+import ItSupportSection from './components/sections/ITSupportSection'
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
@@ -27,6 +33,7 @@ export default function Home() {
   }, [])
 
   return (
+    
     <>
       {/* Add CSS for animations */}
       <style jsx global>{`
@@ -57,7 +64,7 @@ export default function Home() {
           transition-delay: 0.8s;
         }
       `}</style>
-
+      <Header mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
       <main className="min-h-screen bg-black text-white relative overflow-hidden">
         {/* Background Gradients */}
         <div className="absolute inset-0">
@@ -81,18 +88,18 @@ export default function Home() {
             </h1>
             
             <p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto text-gray-300 leading-relaxed">
-              Automatisierungen, KI-Agenten und moderne Webentwicklung - 
+              KI-Agenten, moderne Webentwicklung und professioneller IT-Support - 
               <br className="hidden md:block" />
               <span className="text-blue-400 font-semibold">alles aus einer Hand</span>
             </p>
             
             <div className="space-y-4 md:space-y-0 md:space-x-6 md:flex md:justify-center md:items-center">
-              <button className="w-full md:w-auto bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-xl hover:shadow-blue-500/25 transform hover:scale-105">
+              <a href="/kontakt" className="w-full md:w-auto bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-xl hover:shadow-blue-500/25 transform hover:scale-105 inline-block text-center">
                 Kostenloses Beratungsgespräch
-              </button>
-              <button className="w-full md:w-auto border border-gray-600 px-8 py-4 rounded-lg text-lg font-semibold hover:border-blue-400 hover:text-blue-400 transition-all duration-300">
+              </a>
+              <a href="/webdesign#portfolio" className="w-full md:w-auto border border-gray-600 px-8 py-4 rounded-lg text-lg font-semibold hover:border-blue-400 hover:text-blue-400 transition-all duration-300 inline-block text-center">
                 Projekte ansehen
-              </button>
+              </a>
             </div>
           </div>
         </section>
@@ -110,28 +117,11 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Cards Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Cards Grid - Now 3 cards instead of 4 */}
+            <div className="grid md:grid-cols-3 gap-8">
               
-              {/* Card 1: Automatisierungen */}
-              <div className="group bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 hover:border-blue-500/50 transition-all duration-500 hover:transform hover:scale-105 scroll-animate">
-                <div className="mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  </div>
-                </div>
-                <h3 className="text-2xl font-bold mb-4 group-hover:text-blue-400 transition-colors">
-                  Automatisierungen
-                </h3>
-                <p className="text-gray-400 leading-relaxed">
-                  Sparen Sie Zeit und Kosten durch intelligente Workflow-Automatisierung. Wir optimieren Ihre Geschäftsprozesse.
-                </p>
-              </div>
-
-              {/* Card 2: KI-Agenten */}
-              <div className="group bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 hover:border-purple-500/50 transition-all duration-500 hover:transform hover:scale-105 scroll-animate animate-delay-1">
+              {/* Card 1: KI-Agenten (moved from position 2) */}
+              <div className="group bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 hover:border-purple-500/50 transition-all duration-500 hover:transform hover:scale-105 scroll-animate">
                 <div className="mb-6">
                   <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -142,13 +132,21 @@ export default function Home() {
                 <h3 className="text-2xl font-bold mb-4 group-hover:text-purple-400 transition-colors">
                   KI-Agenten
                 </h3>
-                <p className="text-gray-400 leading-relaxed">
+                <p className="text-gray-400 leading-relaxed mb-6">
                   Intelligente KI-Lösungen für Kundenservice, Datenanalyse und Entscheidungsfindung in Ihrem Unternehmen.
                 </p>
+                <div className="space-y-3">
+                  <a href="/ki-agenten" className="block w-full bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded-lg transition-all duration-300 font-semibold text-center">
+                    Mehr erfahren
+                  </a>
+                  <a href="/kontakt?kategorie=ki-agenten" className="block w-full border border-purple-600 hover:bg-purple-600 px-6 py-3 rounded-lg transition-all duration-300 font-semibold text-center">
+                    KI-Beratung
+                  </a>
+                </div>
               </div>
 
-              {/* Card 3: Webdesign */}
-              <div className="group bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 hover:border-green-500/50 transition-all duration-500 hover:transform hover:scale-105 scroll-animate animate-delay-2">
+              {/* Card 2: Webdesign */}
+              <div className="group bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 hover:border-green-500/50 transition-all duration-500 hover:transform hover:scale-105 scroll-animate animate-delay-1">
                 <div className="mb-6">
                   <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -159,13 +157,21 @@ export default function Home() {
                 <h3 className="text-2xl font-bold mb-4 group-hover:text-green-400 transition-colors">
                   Webentwicklung
                 </h3>
-                <p className="text-gray-400 leading-relaxed">
+                <p className="text-gray-400 leading-relaxed mb-6">
                   Moderne, responsive Websites die konvertieren. Von der Idee bis zur fertigen Web-Anwendung.
                 </p>
+                <div className="space-y-3">
+                  <a href="/webdesign" className="block w-full bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg transition-all duration-300 font-semibold text-center">
+                    Mehr erfahren
+                  </a>
+                  <a href="/kontakt?kategorie=webdesign" className="block w-full border border-green-600 hover:bg-green-600 px-6 py-3 rounded-lg transition-all duration-300 font-semibold text-center">
+                    Website anfragen
+                  </a>
+                </div>
               </div>
 
-              {/* Card 4: IT-Support */}
-              <div className="group bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 hover:border-orange-500/50 transition-all duration-500 hover:transform hover:scale-105 scroll-animate animate-delay-3">
+              {/* Card 3: IT-Support */}
+              <div className="group bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 hover:border-orange-500/50 transition-all duration-500 hover:transform hover:scale-105 scroll-animate animate-delay-2">
                 <div className="mb-6">
                   <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -176,156 +182,16 @@ export default function Home() {
                 <h3 className="text-2xl font-bold mb-4 group-hover:text-orange-400 transition-colors">
                   IT-Support
                 </h3>
-                <p className="text-gray-400 leading-relaxed">
+                <p className="text-gray-400 leading-relaxed mb-6">
                   Professioneller IT-Support und Cloud-Infrastruktur. Wir halten Ihre Systeme am Laufen.
                 </p>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-        {/* Automatisierungen Section */}
-        <section className="relative z-10 py-20 px-6">
-          <div className="max-w-6xl mx-auto">
-            
-            {/* Section Header */}
-            <div className="text-center mb-16 scroll-animate">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-                Automatisierungen für Ihr Unternehmen
-              </h2>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                Sparen Sie Zeit und Kosten durch intelligente Workflow-Automatisierung. 
-                Wir entwickeln maßgeschneiderte Automatisierungslösungen für Ihre Geschäftsprozesse.
-              </p>
-            </div>
-
-            {/* Content Grid */}
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              
-              {/* Left: Content */}
-              <div className="scroll-animate">
-                <div className="space-y-8">
-                  
-                  <div>
-                    <h3 className="text-2xl font-bold mb-4 text-white">
-                      Was sind Automatisierungen?
-                    </h3>
-                    <p className="text-gray-300 leading-relaxed mb-4">
-                      Automatisierungen sind <span className="text-blue-400 font-semibold">intelligente Systeme</span>, die 
-                      wiederkehrende Aufgaben ohne menschlichen Eingriff ausführen. Von der automatischen E-Mail-Bearbeitung 
-                      bis hin zur komplexen Workflow-Automatisierung - wir digitalisieren Ihre Prozesse.
-                    </p>
-                    <p className="text-gray-300 leading-relaxed">
-                      Als <span className="text-purple-400 font-semibold">Automatisierungsexperte</span> entwickle ich 
-                      Lösungen, die Ihre Arbeitsabläufe revolutionieren und dabei Kosten sparen.
-                    </p>
-                  </div>
-
-                  <div>
-                    <h3 className="text-2xl font-bold mb-4 text-white">
-                      Unsere Automatisierungs-Services
-                    </h3>
-                    <ul className="space-y-3 text-gray-300">
-                      <li className="flex items-start">
-                        <svg className="w-5 h-5 text-blue-400 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span><strong className="text-white">E-Mail-Automatisierung:</strong> Automatische Bearbeitung und Weiterleitung von Kundenanfragen</span>
-                      </li>
-                      <li className="flex items-start">
-                        <svg className="w-5 h-5 text-blue-400 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span><strong className="text-white">Datenverarbeitung:</strong> Automatische Synchronisation zwischen verschiedenen Systemen</span>
-                      </li>
-                      <li className="flex items-start">
-                        <svg className="w-5 h-5 text-blue-400 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span><strong className="text-white">Reporting-Automatisierung:</strong> Automatische Generierung von Berichten und Auswertungen</span>
-                      </li>
-                      <li className="flex items-start">
-                        <svg className="w-5 h-5 text-blue-400 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span><strong className="text-white">Workflow-Optimierung:</strong> Komplette Digitalisierung Ihrer Geschäftsprozesse</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                </div>
-              </div>
-
-              {/* Right: Visual/Benefits */}
-              <div className="scroll-animate animate-delay-1">
-                <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-8">
-                  
-                  <h3 className="text-2xl font-bold mb-6 text-white">
-                    Vorteile der Automatisierung
-                  </h3>
-                  
-                  <div className="space-y-6">
-                    
-                    <div className="flex items-start">
-                      <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-white mb-2">Kosteneinsparung</h4>
-                        <p className="text-gray-400">Bis zu 60% Reduzierung der Bearbeitungszeit bei wiederkehrenden Aufgaben</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start">
-                      <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-white mb-2">Effizienzsteigerung</h4>
-                        <p className="text-gray-400">24/7 Verfügbarkeit ohne Fehler oder Verzögerungen bei der Bearbeitung</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start">
-                      <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-white mb-2">Fehlerreduzierung</h4>
-                        <p className="text-gray-400">Eliminierung menschlicher Fehler durch präzise automatisierte Abläufe</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start">
-                      <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-white mb-2">Skalierbarkeit</h4>
-                        <p className="text-gray-400">Problemlose Anpassung an wachsende Anforderungen Ihres Unternehmens</p>
-                      </div>
-                    </div>
-
-                  </div>
-
-               <div className="flex space-x-4 pt-4">
-                    <a href="/automatisierungen" className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg transition-all duration-300 font-semibold">
-                      Mehr erfahren
-                    </a>
-                    <button className="border border-blue-600 hover:bg-blue-600 px-6 py-3 rounded-lg transition-all duration-300 font-semibold">
-                      Projektanfrage
-                    </button>
-                  </div>
-
+                <div className="space-y-3">
+                  <a href="/it-support" className="block w-full bg-orange-600 hover:bg-orange-700 px-6 py-3 rounded-lg transition-all duration-300 font-semibold text-center">
+                    Mehr erfahren
+                  </a>
+                  <a href="/kontakt?kategorie=it-support" className="block w-full border border-orange-600 hover:bg-orange-600 px-6 py-3 rounded-lg transition-all duration-300 font-semibold text-center">
+                    Support anfragen
+                  </a>
                 </div>
               </div>
 
@@ -333,435 +199,17 @@ export default function Home() {
           </div>
         </section>
 
-        {/* KI-Agenten Section */}
-        <section id="ki-agenten" className="relative z-10 py-20 px-6">
-          <div className="max-w-6xl mx-auto">
-            
-            {/* Section Header */}
-            <div className="text-center mb-16 scroll-animate">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-                KI-Agenten für intelligente Automatisierung
-              </h2>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                Revolutionieren Sie Ihren Kundenservice und Ihre Geschäftsprozesse mit intelligenten KI-Agenten. 
-                Von Chatbots bis hin zu komplexen Entscheidungssystemen.
-              </p>
-            </div>
+{/* KI-Agenten Section */}
+<KiAgentenSection />
 
-            {/* Content Grid */}
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              
-              {/* Left: Visual/Benefits */}
-              <div className="scroll-animate">
-                <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-8">
-                  
-                  <h3 className="text-2xl font-bold mb-6 text-white">
-                    Was sind KI-Agenten?
-                  </h3>
-                  
-                  <div className="space-y-6">
-                    
-                    <div className="flex items-start">
-                      <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-white mb-2">Intelligenter Kundenservice</h4>
-                        <p className="text-gray-400">24/7 Kundensupport mit natürlicher Sprachverarbeitung und kontextuellem Verständnis</p>
-                      </div>
-                    </div>
+{/* Webdesign Section */}
+<WebdesignSection />
 
-                    <div className="flex items-start">
-                      <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-white mb-2">Datenanalyse & Insights</h4>
-                        <p className="text-gray-400">Automatische Auswertung großer Datenmengen mit intelligenten Empfehlungen</p>
-                      </div>
-                    </div>
+{/* IT-Support Section */}
+<ItSupportSection />
 
-                    <div className="flex items-start">
-                      <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-white mb-2">Prozessoptimierung</h4>
-                        <p className="text-gray-400">Intelligente Entscheidungsfindung und kontinuierliche Verbesserung Ihrer Abläufe</p>
-                      </div>
-                    </div>
+{/* Google Reviews Section - NEW */}
 
-                  </div>
-
-                <div className="flex space-x-4 pt-4">
-                    <a href="/ki-agenten" className="bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded-lg transition-all duration-300 font-semibold">
-                      Mehr erfahren
-                    </a>
-                    <button className="border border-purple-600 hover:bg-purple-600 px-6 py-3 rounded-lg transition-all duration-300 font-semibold">
-                      Projektanfrage
-                    </button>
-                  </div>
-
-                </div>
-              </div>
-
-              {/* Right: Content */}
-              <div className="scroll-animate animate-delay-1">
-                <div className="space-y-8">
-                  
-                  <div>
-                    <h3 className="text-2xl font-bold mb-4 text-white">
-                      Unsere KI-Agent Lösungen
-                    </h3>
-                    <p className="text-gray-300 leading-relaxed mb-4">
-                      KI-Agenten sind <span className="text-purple-400 font-semibold">intelligente Software-Systeme</span>, die 
-                      selbstständig Entscheidungen treffen und komplexe Aufgaben lösen können. Sie lernen aus Daten und 
-                      verbessern sich kontinuierlich.
-                    </p>
-                    <p className="text-gray-300 leading-relaxed">
-                      Als <span className="text-blue-400 font-semibold">KI-Spezialist</span> entwickle ich maßgeschneiderte 
-                      Agenten für Ihre spezifischen Geschäftsanforderungen.
-                    </p>
-                  </div>
-
-                  <div>
-                    <h3 className="text-2xl font-bold mb-4 text-white">
-                      Einsatzgebiete von KI-Agenten
-                    </h3>
-                    <ul className="space-y-3 text-gray-300">
-                      <li className="flex items-start">
-                        <svg className="w-5 h-5 text-purple-400 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span><strong className="text-white">Voice KI:</strong> Sprachgesteuerte Assistenten für Telefon und Voice-Interfaces</span>
-                      </li>
-                      <li className="flex items-start">
-                        <svg className="w-5 h-5 text-purple-400 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span><strong className="text-white">Chatbots:</strong> Intelligente Gesprächsführung für Website und Messenger</span>
-                      </li>
-                      <li className="flex items-start">
-                        <svg className="w-5 h-5 text-purple-400 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span><strong className="text-white">Workflowautomatisierung:</strong> Intelligente Bearbeitung komplexer Geschäftsprozesse</span>
-                      </li>
-                      <li className="flex items-start">
-                        <svg className="w-5 h-5 text-purple-400 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span><strong className="text-white">Predictive Analytics:</strong> Vorhersagen und Empfehlungen basierend auf Ihren Daten</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </section>
-        {/* Webdesign Section */}
-        <section id="webdesign" className="relative z-10 py-20 px-6">
-          <div className="max-w-6xl mx-auto">
-            
-            {/* Section Header */}
-            <div className="text-center mb-16 scroll-animate">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-                Moderne Webentwicklung für Ihr Unternehmen
-              </h2>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                Website erstellen, die überzeugt und konvertiert. Von der Webentwicklung bis zur kompletten digitalen Präsenz - 
-                wir entwickeln Websites, die Ihr Unternehmen erfolgreich machen.
-              </p>
-            </div>
-
-            {/* Content Grid */}
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              
-              {/* Left: Content */}
-              <div className="scroll-animate">
-                <div className="space-y-8">
-                  
-                  <div>
-                    <h3 className="text-2xl font-bold mb-4 text-white">
-                      Professionelle Webentwicklung
-                    </h3>
-                    <p className="text-gray-300 leading-relaxed mb-4">
-                      Moderne <span className="text-green-400 font-semibold">Website erstellen</span> bedeutet mehr als nur schönes Design. 
-                      Wir entwickeln strategische Webseiten, die Ihre Zielgruppe ansprechen und Geschäftsergebnisse liefern.
-                    </p>
-                    <p className="text-gray-300 leading-relaxed">
-                      Als <span className="text-blue-400 font-semibold">Webentwicklung-Experte</span> setze ich auf moderne Technologien 
-                      und bewährte Methoden für nachhaltigen Erfolg.
-                    </p>
-                  </div>
-
-                  <div>
-                    <h3 className="text-2xl font-bold mb-4 text-white">
-                      Unsere Webdesign Services
-                    </h3>
-                    <ul className="space-y-3 text-gray-300">
-                      <li className="flex items-start">
-                        <svg className="w-5 h-5 text-green-400 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span><strong className="text-white">Responsive Webdesign:</strong> Perfekte Darstellung auf allen Geräten - vom Smartphone bis Desktop</span>
-                      </li>
-                      <li className="flex items-start">
-                        <svg className="w-5 h-5 text-green-400 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span><strong className="text-white">E-Commerce Lösungen:</strong> Professionelle Online-Shops mit moderner Shopping-Experience</span>
-                      </li>
-                      <li className="flex items-start">
-                        <svg className="w-5 h-5 text-green-400 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span><strong className="text-white">SEO-Optimierung:</strong> Bessere Sichtbarkeit in Google und anderen Suchmaschinen</span>
-                      </li>
-                      <li className="flex items-start">
-                        <svg className="w-5 h-5 text-green-400 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span><strong className="text-white">Performance-Optimierung:</strong> Schnelle Ladezeiten für bessere User Experience</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="flex space-x-4 pt-4">
-                    <a href="/webdesign" className="bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg transition-all duration-300 font-semibold">
-                      Mehr erfahren
-                    </a>
-                    <button className="border border-green-600 hover:bg-green-600 px-6 py-3 rounded-lg transition-all duration-300 font-semibold">
-                      Projektanfrage
-                    </button>
-                  </div>
-
-                </div>
-              </div>
-
-              {/* Right: Visual/Benefits */}
-              <div className="scroll-animate animate-delay-1">
-                <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-8">
-                  
-                  <h3 className="text-2xl font-bold mb-6 text-white">
-                    Technologien & Tools
-                  </h3>
-                  
-                  <div className="space-y-6">
-                    
-                    <div className="flex items-start">
-                      <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-white mb-2">Moderne Frameworks</h4>
-                        <p className="text-gray-400">React, Next.js, Vue.js für hochperformante und skalierbare Web-Anwendungen</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start">
-                      <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-white mb-2">Backend & Datenbanken</h4>
-                        <p className="text-gray-400">Node.js, Python, PostgreSQL, MongoDB für robuste Backend-Systeme</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start">
-                      <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-white mb-2">Cloud & Hosting</h4>
-                        <p className="text-gray-400">AWS, Vercel, Netlify für zuverlässiges und skalierbares Hosting</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start">
-                      <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-white mb-2">Testing & Qualität</h4>
-                        <p className="text-gray-400">Automatisierte Tests und Code-Reviews für höchste Qualitätsstandards</p>
-                      </div>
-                    </div>
-
-                  </div>
-
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-        {/* IT-Support Section */}
-        <section id="it-support" className="relative z-10 py-20 px-6">
-          <div className="max-w-6xl mx-auto">
-            
-            {/* Section Header */}
-            <div className="text-center mb-16 scroll-animate">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-                Professioneller IT-Support & Cloud Infrastruktur
-              </h2>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                Zuverlässiger PC Service und IT-Dienstleistungen für Ihr Unternehmen. 
-                Von der Cloud Infrastruktur bis zum täglichen IT-Support - wir halten Ihre Systeme am Laufen.
-              </p>
-            </div>
-
-            {/* Content Grid */}
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              
-              {/* Left: Visual/Benefits */}
-              <div className="scroll-animate">
-                <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-8">
-                  
-                  <h3 className="text-2xl font-bold mb-6 text-white">
-                    Unsere IT-Dienstleistungen
-                  </h3>
-                  
-                  <div className="space-y-6">
-                    
-                    <div className="flex items-start">
-                      <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-white mb-2">PC Service & Hardware</h4>
-                        <p className="text-gray-400">Reparatur, Wartung und Optimierung Ihrer Computer und Netzwerke</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start">
-                      <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-white mb-2">Cloud Infrastruktur</h4>
-                        <p className="text-gray-400">Sichere und skalierbare Cloud-Lösungen für moderne Unternehmen</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start">
-                      <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-white mb-2">Sicherheit & Backup</h4>
-                        <p className="text-gray-400">Umfassende Sicherheitslösungen und automatische Datensicherung</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start">
-                      <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-white mb-2">24/7 Support</h4>
-                        <p className="text-gray-400">Schnelle Hilfe bei IT-Problemen - auch außerhalb der Geschäftszeiten</p>
-                      </div>
-                    </div>
-
-                  </div>
-
-                </div>
-              </div>
-
-              {/* Right: Content */}
-              <div className="scroll-animate animate-delay-1">
-                <div className="space-y-8">
-                  
-                  <div>
-                    <h3 className="text-2xl font-bold mb-4 text-white">
-                      Warum unseren IT-Support wählen?
-                    </h3>
-                    <p className="text-gray-300 leading-relaxed mb-4">
-                      Professioneller <span className="text-orange-400 font-semibold">PC Service</span> und umfassende 
-                      <span className="text-blue-400 font-semibold"> IT-Dienstleistungen</span> aus einer Hand. 
-                      Wir sorgen dafür, dass Ihre IT-Infrastruktur reibungslos funktioniert.
-                    </p>
-                    <p className="text-gray-300 leading-relaxed">
-                      Mit jahrelanger Erfahrung in der <span className="text-purple-400 font-semibold">Systemintegration</span> 
-                      und modernen Cloud-Technologien bieten wir Ihnen zuverlässige Lösungen.
-                    </p>
-                  </div>
-
-                  <div>
-                    <h3 className="text-2xl font-bold mb-4 text-white">
-                      Häufige Fragen zu unserem IT-Support
-                    </h3>
-                    <ul className="space-y-3 text-gray-300">
-                      <li className="flex items-start">
-                        <svg className="w-5 h-5 text-orange-400 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span><strong className="text-white">Implementieren Sie M365?</strong> Ja, wir sind Microsoft 365 Experten und unterstützen bei Migration und Setup</span>
-                      </li>
-                      <li className="flex items-start">
-                        <svg className="w-5 h-5 text-orange-400 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span><strong className="text-white">Kleinere Services möglich?</strong> Ja, von Einzelreparaturen bis zu großen Projekten - alles ist möglich</span>
-                      </li>
-                      <li className="flex items-start">
-                        <svg className="w-5 h-5 text-orange-400 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span><strong className="text-white">Kostet eine Beratung?</strong> Nein, das Erstgespräch und die Beratung sind komplett kostenlos</span>
-                      </li>
-                      <li className="flex items-start">
-                        <svg className="w-5 h-5 text-orange-400 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span><strong className="text-white">Remote Support möglich?</strong> Ja, viele Probleme können wir direkt per Fernwartung lösen</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="flex space-x-4 pt-4">
-                    <a href="/it-support" className="bg-orange-600 hover:bg-orange-700 px-6 py-3 rounded-lg transition-all duration-300 font-semibold">
-                      Mehr erfahren
-                    </a>
-                    <button className="border border-orange-600 hover:bg-orange-600 px-6 py-3 rounded-lg transition-all duration-300 font-semibold">
-                      Projektanfrage
-                    </button>
-                  </div>
-
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </section>
 
         {/* ROI Section */}
         {/* ROI Section */}
@@ -963,7 +411,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-
+                    <GoogleReviewsSection />
         {/* About Me Section */}
         <section className="relative z-10 py-20 px-6">
           <div className="max-w-6xl mx-auto">
@@ -1026,7 +474,7 @@ export default function Home() {
                         Docker & Container
                       </span>
                       <span className="px-4 py-2 bg-orange-600/20 border border-orange-600/50 rounded-lg text-orange-400 text-sm font-medium">
-                        Automatisierung
+                        KI-Entwicklung
                       </span>
                     </div>
 
@@ -1117,9 +565,9 @@ export default function Home() {
                   style={{ maxHeight: '0px' }}
                 >
                   <div className="p-6 pt-0 text-gray-300 leading-relaxed">
-                    <span className="text-blue-400 font-semibold">Automatisierung</span> bedeutet, dass wiederkehrende Aufgaben von intelligenten Systemen übernommen werden. 
-                    Das kann E-Mail-Bearbeitung, Datenverarbeitung oder komplette <span className="text-purple-400 font-semibold">Workflow-Automatisierung</span> sein. 
-                    Unternehmen sparen dadurch bis zu 60% Zeit und reduzieren Fehler drastisch.
+                    <span className="text-blue-400 font-semibold">KI-Agenten</span> sind intelligente Software-Systeme, die selbstständig Entscheidungen treffen und lernen. 
+                    Sie können als Chatbots für Kundenservice eingesetzt werden, <span className="text-purple-400 font-semibold">Voice KI</span> für Telefonsysteme 
+                    oder für komplexe Datenanalyse. Der größte Vorteil: Sie arbeiten 24/7 und werden kontinuierlich besser.
                   </div>
                 </div>
               </div>
@@ -1141,7 +589,7 @@ export default function Home() {
                   className="w-full flex justify-between items-center p-6 text-left hover:bg-gray-800/30 transition-colors"
                 >
                   <h3 className="text-xl font-bold text-white pr-4">
-                    Was sind KI-Agenten und welche Vorteile bieten sie?
+                    Wie entwickeln Sie Websites und welche Technologien nutzen Sie?
                   </h3>
                   <svg 
                     id="faq-icon-2" 
@@ -1159,9 +607,9 @@ export default function Home() {
                   style={{ maxHeight: '0px' }}
                 >
                   <div className="p-6 pt-0 text-gray-300 leading-relaxed">
-                    <span className="text-purple-400 font-semibold">KI-Agenten</span> sind intelligente Software-Systeme, die selbstständig Entscheidungen treffen und lernen. 
-                    Sie können als Chatbots für Kundenservice eingesetzt werden, <span className="text-blue-400 font-semibold">Voice KI</span> für Telefonsysteme 
-                    oder für komplexe Datenanalyse. Der größte Vorteil: Sie arbeiten 24/7 und werden kontinuierlich besser.
+                    Wir entwickeln moderne <span className="text-green-400 font-semibold">Websites</span> am liebsten selbst programmiert mit React und Next.js für maximale Performance. 
+                    Für kleinere Projekte nutzen wir auch WordPress. Unsere <span className="text-blue-400 font-semibold">Webentwicklung</span> 
+                    ist immer SEO-optimiert, mobile-first und auf Conversion ausgelegt.
                   </div>
                 </div>
               </div>
@@ -1183,7 +631,7 @@ export default function Home() {
                   className="w-full flex justify-between items-center p-6 text-left hover:bg-gray-800/30 transition-colors"
                 >
                   <h3 className="text-xl font-bold text-white pr-4">
-                    Wie entwickeln Sie Websites und welche Technologien nutzen Sie?
+                    Implementieren Sie Microsoft 365 und andere Cloud-Lösungen?
                   </h3>
                   <svg 
                     id="faq-icon-3" 
@@ -1201,9 +649,9 @@ export default function Home() {
                   style={{ maxHeight: '0px' }}
                 >
                   <div className="p-6 pt-0 text-gray-300 leading-relaxed">
-                    Wir entwickeln moderne <span className="text-green-400 font-semibold">Websites</span> am liebsten selbst programmiert mit React und Next.js für maximale Performance. 
-                    Für kleinere Projekte nutzen wir auch WordPress. Unsere <span className="text-blue-400 font-semibold">Webentwicklung</span> 
-                    ist immer SEO-optimiert, mobile-first und auf Conversion ausgelegt.
+                    Ja, wir sind <span className="text-orange-400 font-semibold">Microsoft 365 Experten</span> und unterstützen bei Migration, Setup und Schulung. 
+                    Unsere <span className="text-blue-400 font-semibold">Cloud Infrastruktur</span> Services umfassen auch AWS, Google Cloud und andere Plattformen. 
+                    Wir sorgen für sichere und skalierbare Lösungen.
                   </div>
                 </div>
               </div>
@@ -1225,7 +673,7 @@ export default function Home() {
                   className="w-full flex justify-between items-center p-6 text-left hover:bg-gray-800/30 transition-colors"
                 >
                   <h3 className="text-xl font-bold text-white pr-4">
-                    Implementieren Sie Microsoft 365 und andere Cloud-Lösungen?
+                    Können Sie auch kleinere Services übernehmen oder nur große Projekte?
                   </h3>
                   <svg 
                     id="faq-icon-4" 
@@ -1243,9 +691,9 @@ export default function Home() {
                   style={{ maxHeight: '0px' }}
                 >
                   <div className="p-6 pt-0 text-gray-300 leading-relaxed">
-                    Ja, wir sind <span className="text-orange-400 font-semibold">Microsoft 365 Experten</span> und unterstützen bei Migration, Setup und Schulung. 
-                    Unsere <span className="text-blue-400 font-semibold">Cloud Infrastruktur</span> Services umfassen auch AWS, Google Cloud und andere Plattformen. 
-                    Wir sorgen für sichere und skalierbare Lösungen.
+                    Absolut! Von einzelnen <span className="text-orange-400 font-semibold">PC Reparaturen</span> bis hin zu komplexen Digitalisierungsprojekten - 
+                    wir helfen bei allem. Unser <span className="text-blue-400 font-semibold">IT-Support</span> ist flexibel skalierbar. 
+                    Auch für kleine Unternehmen in Goch, Kleve und Umgebung sind wir da.
                   </div>
                 </div>
               </div>
@@ -1267,7 +715,7 @@ export default function Home() {
                   className="w-full flex justify-between items-center p-6 text-left hover:bg-gray-800/30 transition-colors"
                 >
                   <h3 className="text-xl font-bold text-white pr-4">
-                    Können Sie auch kleinere Services übernehmen oder nur große Projekte?
+                    Kostet eine Beratung etwas und wie läuft sie ab?
                   </h3>
                   <svg 
                     id="faq-icon-5" 
@@ -1285,48 +733,6 @@ export default function Home() {
                   style={{ maxHeight: '0px' }}
                 >
                   <div className="p-6 pt-0 text-gray-300 leading-relaxed">
-                    Absolut! Von einzelnen <span className="text-orange-400 font-semibold">PC Reparaturen</span> bis hin zu komplexen Digitalisierungsprojekten - 
-                    wir helfen bei allem. Unser <span className="text-blue-400 font-semibold">IT-Support</span> ist flexibel skalierbar. 
-                    Auch für kleine Unternehmen in Goch, Kleve und Umgebung sind wir da.
-                  </div>
-                </div>
-              </div>
-
-              {/* FAQ Item 6 */}
-              <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-all duration-300">
-                <button 
-                  onClick={() => {
-                    const content = document.getElementById('faq-6');
-                    const icon = document.getElementById('faq-icon-6');
-                    if (content.style.maxHeight === '0px' || !content.style.maxHeight) {
-                      content.style.maxHeight = content.scrollHeight + 'px';
-                      icon.style.transform = 'rotate(45deg)';
-                    } else {
-                      content.style.maxHeight = '0px';
-                      icon.style.transform = 'rotate(0deg)';
-                    }
-                  }}
-                  className="w-full flex justify-between items-center p-6 text-left hover:bg-gray-800/30 transition-colors"
-                >
-                  <h3 className="text-xl font-bold text-white pr-4">
-                    Kostet eine Beratung etwas und wie läuft sie ab?
-                  </h3>
-                  <svg 
-                    id="faq-icon-6" 
-                    className="w-6 h-6 text-blue-400 flex-shrink-0 transition-transform duration-300" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                  </svg>
-                </button>
-                <div 
-                  id="faq-6" 
-                  className="overflow-hidden transition-all duration-300 ease-in-out"
-                  style={{ maxHeight: '0px' }}
-                >
-                  <div className="p-6 pt-0 text-gray-300 leading-relaxed">
                     Nein, das Erstgespräch und die Beratung sind komplett <span className="text-green-400 font-semibold">kostenlos</span>. 
                     Wir analysieren Ihre Anforderungen, erklären mögliche Lösungsansätze und erstellen Ihnen ein transparentes Angebot. 
                     Erst wenn Sie sich für eine Zusammenarbeit entscheiden, entstehen Kosten.
@@ -1334,78 +740,12 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* FAQ Item 7 */}
-              <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-all duration-300">
-                <button 
-                  onClick={() => {
-                    const content = document.getElementById('faq-7');
-                    const icon = document.getElementById('faq-icon-7');
-                    if (content.style.maxHeight === '0px' || !content.style.maxHeight) {
-                      content.style.maxHeight = content.scrollHeight + 'px';
-                      icon.style.transform = 'rotate(45deg)';
-                    } else {
-                      content.style.maxHeight = '0px';
-                      icon.style.transform = 'rotate(0deg)';
-                    }
-                  }}
-                  className="w-full flex justify-between items-center p-6 text-left hover:bg-gray-800/30 transition-colors"
-                >
-                  <h3 className="text-xl font-bold text-white pr-4">
-                    In welchen Regionen bieten Sie Ihre IT-Services an?
-                  </h3>
-                  <svg 
-                    id="faq-icon-7" 
-                    className="w-6 h-6 text-blue-400 flex-shrink-0 transition-transform duration-300" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                  </svg>
-                </button>
-                <div 
-                  id="faq-7" 
-                  className="overflow-hidden transition-all duration-300 ease-in-out"
-                  style={{ maxHeight: '0px' }}
-                >
-                  <div className="p-6 pt-0 text-gray-300 leading-relaxed">
-                    Wir sind in <span className="text-blue-400 font-semibold">Goch, Kleve, Düsseldorf</span> und ganz 
-                    <span className="text-purple-400 font-semibold"> Nordrhein-Westfalen</span> tätig. 
-                    Viele Services wie <span className="text-green-400 font-semibold">Webentwicklung</span> und 
-                    <span className="text-orange-400 font-semibold"> KI-Entwicklung</span> bieten wir deutschlandweit remote an. 
-                    Vor-Ort-Support gibt es im Umkreis von 50km um Goch.
-                  </div>
-                </div>
-              </div>
-
             </div>
           </div>
         </section>
-
-        {/* WhatsApp Floating Button */}
-        <div className="fixed bottom-6 right-6 z-50">
-          <a 
-            href="https://wa.me/491741928943?text=Hallo,%20ich%20interessiere%20mich%20für%20Ihre%20IT-Services"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-center justify-center w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
-          >
-            <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.516"/>
-            </svg>
-            <div className="absolute -top-2 -right-2 w-4 h-4 bg-red-500 rounded-full animate-pulse"></div>
-            
-            {/* Tooltip */}
-            <div className="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-black text-white px-3 py-2 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-              WhatsApp Kontakt
-              <div className="absolute top-1/2 left-full transform -translate-y-1/2 w-0 h-0 border-l-4 border-l-black border-t-4 border-t-transparent border-b-4 border-b-transparent"></div>
-            </div>
-          </a>
-        </div>
-
-        
-
       </main>
+      <Footer />
+      <WhatsAppButton />
     </>
   )
-} 
+}
