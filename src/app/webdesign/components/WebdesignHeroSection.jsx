@@ -7,9 +7,15 @@ const WebdesignHeroSection = () => {
   const [isTyping, setIsTyping] = useState(true);
   const [showContent, setShowContent] = useState(false);
   const [showButtons, setShowButtons] = useState(false);
+  const [isClient, setIsClient] = useState(false); // Neu hinzugefügt
 
   const words = ["Websites", "Webdesign", "Webentwicklung", "Online-Präsenzen"];
   const mainHeading = "Wir erstellen ";
+
+  // Client-side hydration check
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
     let timeout;
@@ -59,6 +65,30 @@ const WebdesignHeroSection = () => {
     };
   }, []);
 
+  // Feste Positionen für die Partikel (verhindert Hydration-Mismatch)
+  const particlePositions = [
+    { left: '10%', top: '20%', duration: 4.2, delay: 0.5 },
+    { left: '85%', top: '15%', duration: 5.8, delay: 1.2 },
+    { left: '15%', top: '75%', duration: 3.6, delay: 2.1 },
+    { left: '75%', top: '85%', duration: 6.1, delay: 0.8 },
+    { left: '45%', top: '10%', duration: 4.7, delay: 1.8 },
+    { left: '25%', top: '45%', duration: 5.3, delay: 0.3 },
+    { left: '90%', top: '60%', duration: 3.9, delay: 1.5 },
+    { left: '5%', top: '50%', duration: 5.1, delay: 2.4 },
+    { left: '60%', top: '25%', duration: 4.4, delay: 0.9 },
+    { left: '35%', top: '90%', duration: 5.7, delay: 1.7 },
+    { left: '80%', top: '35%', duration: 4.1, delay: 0.6 },
+    { left: '20%', top: '65%', duration: 5.9, delay: 2.2 },
+    { left: '95%', top: '80%', duration: 3.8, delay: 1.1 },
+    { left: '50%', top: '5%', duration: 4.6, delay: 1.9 },
+    { left: '70%', top: '70%', duration: 5.2, delay: 0.4 },
+    { left: '30%', top: '30%', duration: 4.8, delay: 1.6 },
+    { left: '65%', top: '55%', duration: 3.7, delay: 2.3 },
+    { left: '40%', top: '85%', duration: 5.4, delay: 0.7 },
+    { left: '85%', top: '45%', duration: 4.3, delay: 1.4 },
+    { left: '55%', top: '95%', duration: 5.6, delay: 2.0 }
+  ];
+
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-gray-900 via-black to-purple-900 text-white overflow-hidden flex items-center">
       
@@ -74,72 +104,80 @@ const WebdesignHeroSection = () => {
         }}></div>
       </div>
 
-      {/* Floating Code Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="code-element code-1" style={{
-          position: 'absolute',
-          top: '10%',
-          left: '10%',
-          opacity: 0.1,
-          animation: 'float 6s ease-in-out infinite',
-          fontSize: '14px',
-          color: '#8B5CF6'
-        }}>
-          &lt;div className="hero"&gt;
+      {/* Floating Code Elements - Nur wenn Client-side und sehr subtil */}
+      {isClient && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="code-element code-1" style={{
+            position: 'absolute',
+            top: '10%',
+            left: '10%',
+            opacity: 0.03,
+            animation: 'float 6s ease-in-out infinite',
+            fontSize: '12px',
+            color: '#8B5CF6',
+            zIndex: -1
+          }}>
+            &lt;div className="hero"&gt;
+          </div>
+          <div className="code-element code-2" style={{
+            position: 'absolute',
+            top: '20%',
+            right: '15%',
+            opacity: 0.03,
+            animation: 'float 8s ease-in-out infinite',
+            animationDelay: '1s',
+            fontSize: '11px',
+            color: '#06B6D4',
+            zIndex: -1
+          }}>
+            const design = () =&gt; magic
+          </div>
+          <div className="code-element code-3" style={{
+            position: 'absolute',
+            bottom: '30%',
+            left: '20%',
+            opacity: 0.03,
+            animation: 'float 7s ease-in-out infinite',
+            animationDelay: '2s',
+            fontSize: '11px',
+            color: '#10B981',
+            zIndex: -1
+          }}>
+            responsive: true
+          </div>
+          <div className="code-element code-4" style={{
+            position: 'absolute',
+            bottom: '15%',
+            right: '10%',
+            opacity: 0.03,
+            animation: 'float 5s ease-in-out infinite',
+            animationDelay: '3s',
+            fontSize: '10px',
+            color: '#F59E0B',
+            zIndex: -1
+          }}>
+            &lt;/website&gt;
+          </div>
         </div>
-        <div className="code-element code-2" style={{
-          position: 'absolute',
-          top: '20%',
-          right: '15%',
-          opacity: 0.1,
-          animation: 'float 8s ease-in-out infinite',
-          animationDelay: '1s',
-          fontSize: '12px',
-          color: '#06B6D4'
-        }}>
-          const design = () =&gt; magic
-        </div>
-        <div className="code-element code-3" style={{
-          position: 'absolute',
-          bottom: '30%',
-          left: '20%',
-          opacity: 0.1,
-          animation: 'float 7s ease-in-out infinite',
-          animationDelay: '2s',
-          fontSize: '13px',
-          color: '#10B981'
-        }}>
-          responsive: true
-        </div>
-        <div className="code-element code-4" style={{
-          position: 'absolute',
-          bottom: '15%',
-          right: '10%',
-          opacity: 0.1,
-          animation: 'float 5s ease-in-out infinite',
-          animationDelay: '3s',
-          fontSize: '11px',
-          color: '#F59E0B'
-        }}>
-          &lt;/website&gt;
-        </div>
-      </div>
+      )}
 
-      {/* Animated Particles */}
-      <div className="absolute inset-0">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-2 h-2 bg-purple-400 rounded-full opacity-30"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animation: `particleFloat ${3 + Math.random() * 4}s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 2}s`
-            }}
-          />
-        ))}
-      </div>
+      {/* Animated Particles - Nur rendern wenn Client-side */}
+      {isClient && (
+        <div className="absolute inset-0">
+          {particlePositions.map((particle, i) => (
+            <div
+              key={i}
+              className="absolute w-2 h-2 bg-purple-400 rounded-full opacity-30"
+              style={{
+                left: particle.left,
+                top: particle.top,
+                animation: `particleFloat ${particle.duration}s ease-in-out infinite`,
+                animationDelay: `${particle.delay}s`
+              }}
+            />
+          ))}
+        </div>
+      )}
 
       {/* CSS Animations */}
       <style jsx>{`

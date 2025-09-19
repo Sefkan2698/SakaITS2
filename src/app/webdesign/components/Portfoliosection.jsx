@@ -98,22 +98,47 @@ const PortfolioSection = () => {
             <div className="p-8 border-b border-gray-800">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                 <div>
-                  {/* Project Selector */}
-                  <div className="flex gap-2 mb-4">
-                    {projects.map((project, index) => (
-                      <button
-                        key={project.id}
-                        onClick={() => setActiveProject(index)}
-                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
-                          activeProject === index
-                            ? 'bg-purple-600 text-white'
-                            : 'bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-700'
-                        }`}
-                      >
-                        {project.title}
-                      </button>
-                    ))}
-                  </div>
+{/* Project Selector - Desktop: Buttons, Mobile: Dropdown */}
+<div className="mb-4">
+  {/* Desktop Version */}
+  <div className="hidden md:flex gap-2">
+    {projects.map((project, index) => (
+      <button
+        key={project.id}
+        onClick={() => setActiveProject(index)}
+        className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
+          activeProject === index
+            ? 'bg-purple-600 text-white'
+            : 'text-gray-400 hover:text-white bg-gray-800/50'
+        }`}
+      >
+        {project.title}
+      </button>
+    ))}
+  </div>
+  
+  {/* Mobile Dropdown Version */}
+  <div className="md:hidden">
+    <select
+      value={activeProject}
+      onChange={(e) => setActiveProject(parseInt(e.target.value))}
+      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:border-purple-500 focus:outline-none appearance-none cursor-pointer"
+      style={{
+        backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
+        backgroundPosition: 'right 0.5rem center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: '1.5em 1.5em',
+        paddingRight: '2.5rem'
+      }}
+    >
+      {projects.map((project, index) => (
+        <option key={project.id} value={index} className="bg-gray-800">
+          {project.title}
+        </option>
+      ))}
+    </select>
+  </div>
+</div>
                   
                   <div className="flex items-center gap-4 mb-2">
                     <h3 className="text-3xl font-bold text-white">

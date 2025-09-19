@@ -79,11 +79,10 @@ export default function Home() {
           <div className="max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
               <span className="text-white">
-                IT-Lösungen für Ihr
-              </span>
+                IT-Lösungen für Ihr              </span>
               <br />
               <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Unternehmen
+              Unternehmen
               </span>
             </h1>
             
@@ -133,7 +132,7 @@ export default function Home() {
                   KI-Agenten
                 </h3>
                 <p className="text-gray-400 leading-relaxed mb-6">
-                  Intelligente KI-Lösungen für Kundenservice, Datenanalyse und Entscheidungsfindung in Ihrem Unternehmen.
+                  Intelligente KI-Lösungen für Kundenservice, Datenanalyse und Entscheidungsfindung.
                 </p>
                 <div className="space-y-3">
                   <a href="/ki-agenten" className="block w-full bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded-lg transition-all duration-300 font-semibold text-center">

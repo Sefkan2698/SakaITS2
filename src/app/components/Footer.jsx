@@ -28,11 +28,6 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-4">Services</h3>
             <ul className="space-y-2 text-gray-400">
               <li>
-                <a href="/automatisierungen" className="hover:text-blue-400 transition-colors">
-                  Automatisierungen
-                </a>
-              </li>
-              <li>
                 <a href="/ki-agenten" className="hover:text-blue-400 transition-colors">
                   KI-Agenten
                 </a>

@@ -65,9 +65,9 @@ const FinalCTASection = () => {
           <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white leading-tight">
             Bereit für intelligente 
             <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
-              Automatisierung?
-            </span>
+ <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
+  <br className="sm:hidden" />Automatisierung?
+</span>
           </h2>
           <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8">
             Lassen Sie uns gemeinsam Ihre Geschäftsprozesse revolutionieren. 

@@ -109,7 +109,8 @@ const ITServicesSection = () => {
         }}></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      {/* Container mit korrigiertem Padding */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -122,16 +123,18 @@ const ITServicesSection = () => {
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+        {/* Services Grid - Korrigierte Zentrierung */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
           {services.map((service, index) => (
             <div
               key={service.id}
-              className={`relative p-8 rounded-2xl border border-gray-800 bg-gradient-to-br ${service.bgGradient} backdrop-blur-sm hover:border-gray-600 transition-all duration-500 group cursor-pointer`}
+              className={`relative p-6 lg:p-8 rounded-2xl border border-gray-800 bg-gradient-to-br ${service.bgGradient} backdrop-blur-sm hover:border-gray-600 transition-all duration-500 group cursor-pointer`}
               onMouseEnter={() => setHoveredService(service.id)}
               onMouseLeave={() => setHoveredService(null)}
               style={{
-                animation: `slideUp ${0.6 + index * 0.2}s ease-out forwards`
+                animation: `slideUp ${0.6 + index * 0.2}s ease-out forwards`,
+                opacity: 0,
+                transform: 'translateY(50px)'
               }}
             >
               
@@ -139,77 +142,71 @@ const ITServicesSection = () => {
               <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-500`}></div>
               
               {/* Service Icon */}
-              <div className={`w-16 h-16 bg-gradient-to-r ${service.gradient} rounded-xl flex items-center justify-center mb-6 text-white transform group-hover:scale-110 transition-transform duration-300`}>
+              <div className={`w-14 h-14 lg:w-16 lg:h-16 bg-gradient-to-r ${service.gradient} rounded-xl flex items-center justify-center mb-6 text-white transform group-hover:scale-110 transition-transform duration-300`}>
                 {service.icon}
               </div>
 
               {/* Service Header */}
               <div className="mb-6">
-                <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-400 transition-all duration-300">
+                <h3 className="text-xl lg:text-2xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-400 transition-all duration-300">
                   {service.title}
                 </h3>
-                <p className={`text-transparent bg-clip-text bg-gradient-to-r ${service.gradient} font-semibold`}>
+                <p className={`text-transparent bg-clip-text bg-gradient-to-r ${service.gradient} font-semibold text-sm lg:text-base`}>
                   {service.subtitle}
                 </p>
               </div>
 
               {/* Service Description */}
-              <p className="text-gray-300 mb-6 leading-relaxed">
+              <p className="text-gray-300 mb-6 leading-relaxed text-sm lg:text-base">
                 {service.description}
               </p>
 
               {/* Features */}
               <ul className="space-y-2 mb-6">
                 {service.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center text-gray-300">
+                  <li key={idx} className="flex items-center text-gray-300 text-sm lg:text-base">
                     <div className={`w-2 h-2 bg-gradient-to-r ${service.gradient} rounded-full mr-3 flex-shrink-0`}></div>
                     {feature}
                   </li>
                 ))}
               </ul>
 
-              {/* Pricing */}
-              <div className="mt-auto pt-6 border-t border-gray-800">
-                <div className="flex justify-between items-end">
+              {/* Price Section */}
+              <div className="pt-4 border-t border-gray-800">
+                <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-2xl font-bold text-white">{service.price}</p>
-                    <p className="text-sm text-gray-400">{service.priceNote}</p>
+                    <div className="text-lg lg:text-xl font-bold text-white">{service.price}</div>
+                    <div className="text-xs lg:text-sm text-gray-400">{service.priceNote}</div>
                   </div>
-                  
-                  {/* CTA Button */}
-                  <button className={`px-6 py-3 bg-gradient-to-r ${service.gradient} rounded-lg font-semibold text-white hover:shadow-lg hover:scale-105 transition-all duration-300`}>
+                  <button 
+                    className={`px-4 py-2 bg-gradient-to-r ${service.gradient} rounded-lg text-white font-medium hover:shadow-lg hover:scale-105 transition-all duration-300 text-sm lg:text-base`}
+                  >
                     Anfragen
                   </button>
                 </div>
               </div>
 
-              {/* Hover Glow Effect */}
-              <div className={`absolute -inset-0.5 bg-gradient-to-r ${service.gradient} rounded-2xl blur opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10`}></div>
-              
+              {/* Hover Effect Indicator */}
+              {hoveredService === service.id && (
+                <div className="absolute top-4 right-4">
+                  <div className={`w-3 h-3 bg-gradient-to-r ${service.gradient} rounded-full animate-pulse`}></div>
+                </div>
+              )}
+
             </div>
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center mt-16">
-          <h3 className="text-2xl font-bold text-white mb-4">
-            Nicht das Richtige dabei?
-          </h3>
-          <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-            Wir bieten auch maßgeschneiderte IT-Lösungen. Sprechen Sie uns an und wir finden die perfekte Lösung für Ihre Anforderungen.
-          </p>
-          <button className="bg-gradient-to-r from-blue-600 to-cyan-600 px-8 py-4 rounded-lg text-lg font-semibold text-white hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 transform hover:scale-105">
-            Individuelle Beratung anfragen
-          </button>
-        </div>
+
 
       </div>
 
+      {/* CSS Animations */}
       <style jsx>{`
         @keyframes slideUp {
           from {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(50px);
           }
           to {
             opacity: 1;
@@ -217,7 +214,6 @@ const ITServicesSection = () => {
           }
         }
       `}</style>
-
     </section>
   );
 };
