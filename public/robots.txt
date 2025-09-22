@@ -1,0 +1,35 @@
+# Robots.txt für Saka IT-Solutions
+# Aktualisiert: 22.01.2025
+
+# Erlaubnis für alle Suchmaschinen
+User-agent: *
+Allow: /
+
+# Spezielle Anweisungen für Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Blockiere unwichtige Verzeichnisse
+Disallow: /_next/
+Disallow: /api/
+Disallow: /.git/
+Disallow: /node_modules/
+
+# Sitemap Location
+Sitemap: https://sakaits.com/sitemap.xml
+
+# Zusätzliche Sitemaps (für später)
+# Sitemap: https://sakaits.com/blog-sitemap.xml
+# Sitemap: https://sakaits.com/pages-sitemap.xml
+
+# Wichtige Seiten explizit erlauben
+Allow: /ki-agenten
+Allow: /webdesign  
+Allow: /it-support
+Allow: /kontakt
+Allow: /impressum
+Allow: /datenschutz
+
+# Kontakt-Info für Bots (optional)
+# Contact: sefkansaka@sakaits.com

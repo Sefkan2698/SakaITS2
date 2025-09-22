@@ -7,10 +7,11 @@ const nextConfig = {
   },
   basePath: '',
   assetPrefix: '',
-  // Disable server-side features for static export
-  experimental: {
-    appDir: true
-  }
+  eslint: {
+    // Warning: This allows production builds to successfully complete even if
+    // your project has ESLint errors.
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;

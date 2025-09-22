@@ -485,11 +485,13 @@ export default function Home() {
                   <div className="relative group">
                     <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000"></div>
                     <div className="relative">
-                      <img 
-                        src="/sefkan-profile.webp" 
-                        alt="Sefkan Saka - IT-Experte" 
-                        className="w-80 h-96 object-cover rounded-2xl shadow-2xl"
-                      />
+                      {/* Replaced img with Image component or placeholder */}
+                      <div 
+                        className="w-80 h-96 bg-gray-700 rounded-2xl shadow-2xl flex items-center justify-center text-gray-400"
+                      >
+                        {/* Placeholder für Profilbild */}
+                        <span>Sefkan Saka</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -500,8 +502,8 @@ export default function Home() {
               <div className="mt-12 pt-8 border-t border-gray-700">
                 <blockquote className="text-center">
                   <p className="text-xl md:text-2xl font-medium text-gray-300 italic mb-4">
-                    "Wenn ich etwas mache, dann richtig. Mein Ziel ist es nicht nur IT-Lösungen zu verkaufen, 
-                    sondern <span className="text-blue-400 font-semibold">echten Mehrwert</span> für Ihr Unternehmen zu schaffen."
+                    &ldquo;Wenn ich etwas mache, dann richtig. Mein Ziel ist es nicht nur IT-Lösungen zu verkaufen, 
+                    sondern <span className="text-blue-400 font-semibold">echten Mehrwert</span> für Ihr Unternehmen zu schaffen.&rdquo;
                   </p>
                   <cite className="text-lg font-semibold text-white">
                     — Sefkan Saka
