@@ -191,9 +191,9 @@ const PortfolioSection = () => {
                         <div className="w-3 h-3 bg-red-400 rounded-full"></div>
                         <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
                         <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                        <div className="ml-4 bg-gray-700 text-gray-400 text-xs px-3 py-1 rounded">
-                          baufi-tuezuen.de
-                        </div>
+        <div className="ml-4 bg-gray-700 text-gray-400 text-xs px-3 py-1 rounded">
+  {activeProject === 0 ? 'baufi-tuezuen.de' : 'ezidishop.com'}
+</div>
                       </div>
                       {/* Website Image */}
                       <img 
