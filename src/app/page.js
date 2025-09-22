@@ -481,20 +481,18 @@ export default function Home() {
                 </div>
 
                 {/* Right: Profile Image */}
-                <div className="order-1 md:order-2 flex justify-center">
-                  <div className="relative group">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000"></div>
-                    <div className="relative">
-                      {/* Replaced img with Image component or placeholder */}
-                      <div 
-                        className="w-80 h-96 bg-gray-700 rounded-2xl shadow-2xl flex items-center justify-center text-gray-400"
-                      >
-                        {/* Placeholder für Profilbild */}
-                        <span>Sefkan Saka</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+          <div className="order-1 md:order-2 flex justify-center">
+  <div className="relative group">
+    <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000"></div>
+    <div className="relative">
+      <img 
+        src="/sefkan-profile.webp" 
+        alt="Sefkan Saka - IT-Experte" 
+        className="w-80 h-96 object-cover rounded-2xl shadow-2xl"
+      />
+    </div>
+  </div>
+</div>
 
               </div>
 
