@@ -12,7 +12,7 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen }) {
   return (
     <>
       {/* Navigation */}
-      <nav className="relative z-10 flex justify-between items-center p-6 backdrop-blur-sm bg-black/50">
+      <nav className="relative z-10 flex justify-between items-center p-6 backdrop-blur-sm bg-black/90 ">
         <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
           <a href="/">SakaITS</a>
         </div>
