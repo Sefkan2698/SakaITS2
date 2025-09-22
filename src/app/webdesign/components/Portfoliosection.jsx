@@ -76,7 +76,7 @@ const PortfolioSection = () => {
   const [selectedDevice, setSelectedDevice] = useState('desktop');
 
   return (
-    <section className="relative py-20 px-6 bg-gradient-to-b from-black via-gray-900 to-black">
+    <section id="portfolio-section" className="relative py-20 px-6 bg-gradient-to-b from-black via-gray-900 to-black">
       <div className="max-w-6xl mx-auto">
         
         {/* Section Header */}
@@ -275,9 +275,11 @@ const PortfolioSection = () => {
 
                 {/* CTA */}
                 <div className="pt-4">
+                  <a href={`/kontakt?projekt=${projects[activeProject].title}`} className="bg-gradient-to-r from-purple-600 to-blue-600 px-6 py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 inline-block text-center">
                   <button className="bg-gradient-to-r from-purple-600 to-blue-600 px-6 py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105">
                     Projekt Details ansehen
                   </button>
+                  </a>
                 </div>
 
               </div>

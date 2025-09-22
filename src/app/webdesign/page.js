@@ -7,6 +7,7 @@ import WebdesignHeroSection from './components/WebdesignHeroSection';
 import PortfolioSection from './components/Portfoliosection';
 import ToolsSection from './components/ToolsSection';
 import KeywordsFinalSection from './components/KeywordsFinalSection';
+import CookieConsent from '../components/CookieConsent';
 
 // Main Page Component
 export default function WebdesignPage() {
