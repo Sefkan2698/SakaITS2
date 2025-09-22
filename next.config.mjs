@@ -5,11 +5,10 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
-  basePath: '',
-  assetPrefix: '',
+  // GitHub Repository Name verwenden
+  basePath: '/SakaITS2',
+  assetPrefix: '/SakaITS2',
   eslint: {
-    // Warning: This allows production builds to successfully complete even if
-    // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
 };
