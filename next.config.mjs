@@ -5,9 +5,9 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
-  // GitHub Repository Name verwenden
-  basePath: '/SakaITS2',
-  assetPrefix: '/SakaITS2',
+  // Fix für GitHub Pages
+  basePath: process.env.NODE_ENV === 'production' ? '/SakaITS2' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/SakaITS2/' : '',
   eslint: {
     ignoreDuringBuilds: true,
   },
