@@ -1,8 +1,11 @@
-// src/app/layout.js - Komplette SEO-optimierte Version
+// src/app/layout.js - Vollständige Version mit Cookie-System
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import CookieConsent from "./components/CookieConsent";
+
+// Cookie & Analytics Components
 import GoogleAnalytics from "./components/GoogleAnalytics";
+import ModernCookieBanner from "./components/ModernCookieBanner";  
+import CookieSettingsButton from "./components/CookieSettingsButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,8 +35,8 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "/logo.png", // Dein aktuelles Logo
-        width: 400, // Anpassen je nach Logo-Größe
+        url: "/logo.png",
+        width: 400,
         height: 400,
         alt: "Saka IT-Solutions Logo - IT-Dienstleister Goch Niederrhein"
       }
@@ -42,7 +45,7 @@ export const metadata = {
   
   // Twitter Card
   twitter: {
-    card: "summary", // summary für Logo, summary_large_image für Querformat
+    card: "summary",
     title: "Saka IT-Solutions | IT-Support & Webdesign Goch",
     description: "Moderne IT-Lösungen im Niederrhein: KI-Agenten, Webdesign, 24/7 Support. Innovative Technologie für Ihr Unternehmen.",
     images: ["/logo.png"],
@@ -53,7 +56,7 @@ export const metadata = {
     // Business/Local SEO
     "geo.region": "DE-NW",
     "geo.placename": "Goch, Niederrhein",
-    "geo.position": "51.6816;6.1664", // Goch Koordinaten
+    "geo.position": "51.6816;6.1664",
     "ICBM": "51.6816, 6.1664",
     
     // Business Info
@@ -184,10 +187,9 @@ const jsonLdData = {
           }
         ]
       },
-      "openingHours": "24/7", // Notfall-Support
+      "openingHours": "24/7",
       "sameAs": [
         "https://wa.me/491741928943"
-        // Weitere Social Media Profile hier hinzufügen
       ],
       "founder": {
         "@type": "Person",
@@ -221,7 +223,7 @@ export default function RootLayout({ children }) {
         <meta name="HandheldFriendly" content="true" />
         <meta name="MobileOptimized" content="width" />
         <meta name="mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         
         {/* Favicon */}
@@ -233,9 +235,17 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://www.google-analytics.com" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}>
+        {/* Google Analytics - lädt nur bei Cookie-Consent */}
         <GoogleAnalytics />
+        
+        {/* Haupt-Inhalt der Website */}
         {children}
-        <CookieConsent />
+        
+        {/* Cookie Banner - zeigt sich nur wenn noch kein Consent */}
+        <ModernCookieBanner />
+        
+        {/* Cookie Settings Button - unten links, nur sichtbar wenn Consent vorhanden */}
+        <CookieSettingsButton />
       </body>
     </html>
   );

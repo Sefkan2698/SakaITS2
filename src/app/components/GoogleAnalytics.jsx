@@ -1,10 +1,50 @@
-// src/app/components/GoogleAnalytics.jsx
+// src/app/components/GoogleAnalytics.jsx - DSGVO-konforme Version
 'use client'
 import Script from 'next/script'
+import { useState, useEffect } from 'react'
 
-const GA_MEASUREMENT_ID = 'G-95VLJG7LJ1' // Deine echte Google Analytics ID
+const GA_MEASUREMENT_ID = 'G-95VLJG7LJ1'
 
 export default function GoogleAnalytics() {
+  const [hasConsent, setHasConsent] = useState(false)
+
+  useEffect(() => {
+    // Prüfe Cookie-Consent beim Laden
+    const checkConsent = () => {
+      const consent = localStorage.getItem('cookie-consent')
+      if (consent) {
+        const consentData = JSON.parse(consent)
+        setHasConsent(consentData.analytics === true)
+      }
+    }
+
+    checkConsent()
+
+    // Höre auf Storage-Änderungen (wenn User Consent ändert)
+    const handleStorageChange = () => {
+      checkConsent()
+    }
+
+    window.addEventListener('storage', handleStorageChange)
+
+    // Custom Event für lokale Consent-Änderungen
+    const handleConsentChange = (event) => {
+      setHasConsent(event.detail.analytics === true)
+    }
+
+    window.addEventListener('consentChanged', handleConsentChange)
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange)
+      window.removeEventListener('consentChanged', handleConsentChange)
+    }
+  }, [])
+
+  // Nur laden wenn Consent gegeben wurde
+  if (!hasConsent) {
+    return null
+  }
+
   return (
     <>
       <Script
@@ -19,46 +59,11 @@ export default function GoogleAnalytics() {
           gtag('config', '${GA_MEASUREMENT_ID}', {
             page_title: document.title,
             page_location: window.location.href,
+            anonymize_ip: true,
+            cookie_flags: 'samesite=strict;secure'
           });
         `}
       </Script>
     </>
   )
 }
-
-
-
-// 4. Analytics Tracking Functions
-// src/lib/analytics.js
-export const trackEvent = (eventName, parameters = {}) => {
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', eventName, parameters);
-  }
-};
-
-export const trackPageView = (path) => {
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('config', 'G-XXXXXXXXXX', {
-      page_path: path,
-    });
-  }
-};
-
-// Beispiele für Event Tracking:
-export const trackButtonClick = (buttonName) => {
-  trackEvent('button_click', {
-    button_name: buttonName,
-  });
-};
-
-export const trackFormSubmit = (formName) => {
-  trackEvent('form_submit', {
-    form_name: formName,
-  });
-};
-
-export const trackWhatsAppClick = () => {
-  trackEvent('whatsapp_click', {
-    contact_method: 'whatsapp',
-  });
-};
