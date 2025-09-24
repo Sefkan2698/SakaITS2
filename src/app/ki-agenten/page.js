@@ -99,7 +99,16 @@ const KiHeroSectionTyping = () => {
             </h1>
           </div>
           
-       {/* Progressive Reveal Buttons */}
+          {/* Progressive Reveal Subtext */}
+          <div className={`transition-all duration-1000 ${showSubtext ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Revolutionieren Sie Ihren Kundenservice mit intelligenten Chatbots, 
+              <br className="hidden md:block" />
+              <span className="text-purple-400 font-semibold">Voice AI und automatisierten Entscheidungssystemen</span>
+            </p>
+          </div>
+          
+  {/* Progressive Reveal Buttons */}
 <div className={`transition-all duration-1000 delay-500 ${showButtons ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
   <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
     <button className="glow-button w-full md:w-auto bg-gradient-to-r from-purple-600 to-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105">
@@ -110,18 +119,6 @@ const KiHeroSectionTyping = () => {
     </button>
   </div>
 </div>
-          
-          {/* Progressive Reveal Buttons */}
-          <div className={`transition-all duration-1000 delay-500 ${showButtons ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
-              <button className="glow-button w-full md:w-auto bg-gradient-to-r from-purple-600 to-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105">
-                Live Demo starten
-              </button>
-              <button className="w-full md:w-auto border border-purple-400 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-purple-400 hover:text-black transition-all duration-300">
-                KI-Beratung buchen
-              </button>
-            </div>
-          </div>
           
           {/* Feature Pills */}
           <div className={`transition-all duration-1000 delay-1000 ${showButtons ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
