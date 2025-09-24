@@ -108,18 +108,14 @@ const KiHeroSectionTyping = () => {
             </p>
           </div>
           
-  {/* Progressive Reveal Buttons */}
+{/* Progressive Reveal Buttons */}
 <div className={`transition-all duration-1000 delay-500 ${showButtons ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-  <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
-    <button className="glow-button w-full md:w-auto bg-gradient-to-r from-purple-600 to-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105">
-      Live Demo starten
-    </button>
-    <button className="w-full md:w-auto border border-purple-400 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-purple-400 hover:text-black transition-all duration-300">
+  <div className="flex justify-center items-center">
+    <a href="/kontakt?kategorie=ki-agenten" className="glow-button w-full md:w-auto bg-gradient-to-r from-purple-600 to-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-purple-500/25 inline-block text-center">
       KI-Beratung buchen
-    </button>
+    </a>
   </div>
 </div>
-          
           {/* Feature Pills */}
           <div className={`transition-all duration-1000 delay-1000 ${showButtons ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="flex flex-wrap justify-center gap-4 mt-12">
